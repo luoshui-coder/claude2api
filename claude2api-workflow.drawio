@@ -1,0 +1,244 @@
+<mxfile host="app.diagrams.net" modified="2024-01-20T10:00:00.000Z" agent="5.0" etag="xxx" version="22.1.16" type="device">
+  <diagram name="Claude2API工作流程" id="claude2api-workflow">
+    <mxGraphModel dx="1422" dy="794" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        
+        <!-- 客户端请求 -->
+        <mxCell id="client" value="客户端应用&#xa;(OpenAI格式请求)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="50" y="50" width="120" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- Gin路由层 -->
+        <mxCell id="gin-router" value="Gin 路由层&#xa;/v1/chat/completions" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="250" y="50" width="120" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- 认证中间件 -->
+        <mxCell id="auth-middleware" value="认证中间件&#xa;API Key验证" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="450" y="50" width="120" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- Session选择 -->
+        <mxCell id="session-select" value="Session选择器&#xa;负载均衡/轮询" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="650" y="50" width="120" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- 请求处理器 -->
+        <mxCell id="request-processor" value="请求处理器&#xa;ChatRequestProcessor" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="850" y="50" width="120" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- 格式转换 -->
+        <mxCell id="format-convert" value="格式转换&#xa;OpenAI → Claude" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="850" y="180" width="120" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- 文件处理 -->
+        <mxCell id="file-handler" value="文件处理&#xa;图片/文档上传" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="650" y="180" width="120" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- Claude客户端 -->
+        <mxCell id="claude-client" value="Claude API客户端&#xa;HTTP请求封装" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="450" y="180" width="120" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- 代理层 -->
+        <mxCell id="proxy-layer" value="代理层&#xa;网络访问优化" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="250" y="180" width="120" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- Claude Web API -->
+        <mxCell id="claude-api" value="Claude Web API&#xa;claude.ai" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="50" y="180" width="120" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- SSE响应处理 -->
+        <mxCell id="sse-handler" value="SSE响应处理&#xa;流式数据解析" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="50" y="310" width="120" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- 响应转换 -->
+        <mxCell id="response-convert" value="响应转换&#xa;Claude → OpenAI" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="250" y="310" width="120" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- 特殊功能处理 -->
+        <mxCell id="special-features" value="特殊功能处理&#xa;思考输出/工具调用" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="450" y="310" width="120" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- 流式输出 -->
+        <mxCell id="stream-output" value="流式输出&#xa;SSE格式返回" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="650" y="310" width="120" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- 会话清理 -->
+        <mxCell id="cleanup" value="会话清理&#xa;异步清理对话" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="850" y="310" width="120" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- 错误处理 -->
+        <mxCell id="error-handler" value="错误处理&#xa;重试/故障转移" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffcccc;strokeColor=#ff6666;" vertex="1" parent="1">
+          <mxGeometry x="450" y="440" width="120" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- 配置管理 -->
+        <mxCell id="config-manager" value="配置管理&#xa;环境变量/YAML" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ccccff;strokeColor=#6666ff;" vertex="1" parent="1">
+          <mxGeometry x="50" y="440" width="120" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- 日志记录 -->
+        <mxCell id="logger" value="日志记录&#xa;调试/监控" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ccffcc;strokeColor=#66ff66;" vertex="1" parent="1">
+          <mxGeometry x="250" y="440" width="120" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- 连接线 - 主流程 -->
+        <mxCell id="edge1" edge="1" parent="1" source="client" target="gin-router">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge2" edge="1" parent="1" source="gin-router" target="auth-middleware">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge3" edge="1" parent="1" source="auth-middleware" target="session-select">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge4" edge="1" parent="1" source="session-select" target="request-processor">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge5" edge="1" parent="1" source="request-processor" target="format-convert">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge6" edge="1" parent="1" source="format-convert" target="file-handler">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge7" edge="1" parent="1" source="file-handler" target="claude-client">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge8" edge="1" parent="1" source="claude-client" target="proxy-layer">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge9" edge="1" parent="1" source="proxy-layer" target="claude-api">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- 响应流程 -->
+        <mxCell id="edge10" edge="1" parent="1" source="claude-api" target="sse-handler">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge11" edge="1" parent="1" source="sse-handler" target="response-convert">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge12" edge="1" parent="1" source="response-convert" target="special-features">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge13" edge="1" parent="1" source="special-features" target="stream-output">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge14" edge="1" parent="1" source="stream-output" target="cleanup">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- 返回客户端 -->
+        <mxCell id="edge15" edge="1" parent="1" source="stream-output" target="client" style="curved=1;exitX=0;exitY=0.5;entryX=0.5;entryY=1;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="600" y="340" />
+              <mxPoint x="110" y="400" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- 错误处理连接 -->
+        <mxCell id="edge16" edge="1" parent="1" source="claude-client" target="error-handler" style="dashed=1;dashPattern=5 5;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge17" edge="1" parent="1" source="error-handler" target="session-select" style="curved=1;dashed=1;dashPattern=5 5;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="710" y="470" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- 配置和日志连接 -->
+        <mxCell id="edge18" edge="1" parent="1" source="config-manager" target="session-select" style="dashed=1;dashPattern=3 3;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="110" y="400" />
+              <mxPoint x="710" y="400" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="edge19" edge="1" parent="1" source="logger" target="claude-client" style="dashed=1;dashPattern=3 3;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="310" y="400" />
+              <mxPoint x="510" y="400" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- 标题 -->
+        <mxCell id="title" value="Claude2API 工作流程图" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=20;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="400" y="10" width="200" height="30" as="geometry" />
+        </mxCell>
+        
+        <!-- 图例 -->
+        <mxCell id="legend-title" value="图例:" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="50" y="550" width="50" height="20" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="legend1" value="主要数据流" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="150" y="550" width="80" height="20" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="legend-line1" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="110" y="560" as="sourcePoint" />
+            <mxPoint x="140" y="560" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="legend2" value="错误处理流" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="150" y="580" width="80" height="20" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="legend-line2" value="" style="endArrow=classic;html=1;rounded=0;dashed=1;dashPattern=5 5;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="110" y="590" as="sourcePoint" />
+            <mxPoint x="140" y="590" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="legend3" value="配置依赖" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="150" y="610" width="80" height="20" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="legend-line3" value="" style="endArrow=classic;html=1;rounded=0;dashed=1;dashPattern=3 3;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="110" y="620" as="sourcePoint" />
+            <mxPoint x="140" y="620" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

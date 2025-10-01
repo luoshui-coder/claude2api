@@ -1,0 +1,18 @@
+version: '3'
+services:
+  claude2api:
+    image: ghcr.io/yushangxiao/claude2api:arm-v1.1.7
+    container_name: claude2api
+    ports:
+      - "8080:8080"
+    environment:
+      - SESSIONS=sk-ant-sid01-xxxx,sk-ant-sid01-yyyy
+      - ADDRESS=0.0.0.0:8080
+      - APIKEY=your_api_key
+      - CHAT_DELETE=true
+      - MAX_CHAT_HISTORY_LENGTH=10000
+      - NO_ROLE_PREFIX=false
+      - PROMPT_DISABLE_ARTIFACTS=true
+      - ENABLE_MIRROR_API=false
+      - MIRROR_API_PREFIX=/mirror
+    restart: unless-stopped
