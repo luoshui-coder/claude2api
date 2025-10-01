@@ -79,7 +79,7 @@ func streamRespose(text string, gc *gin.Context) error {
 		ID:      uuid.New().String(),
 		Object:  "chat.completion.chunk",
 		Created: time.Now().Unix(),
-		Model:   "claude-3-7-sonnet-20250219",
+		Model:   "claude-sonnet-4-5-20250929",
 		Choices: []StreamChoice{
 			{
 				Index: 0,
@@ -111,7 +111,7 @@ func noStreamResponse(text string, gc *gin.Context) error {
 		ID:      uuid.New().String(),
 		Object:  "chat.completion",
 		Created: time.Now().Unix(),
-		Model:   "claude-3-7-sonnet-20250219",
+		Model:   "claude-sonnet-4-5-20250929",
 		Choices: []NoStreamChoice{
 			{
 				Index: 0,
